@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Quantenliebe Tarot – Dein Moment der Klarheit</title>
+<style>
+:root{--bg:#fbf7ef;--fg:#0b3a40;--mut:#41666a;--pan:#fff;--line:#d8cfbd;--acc:#8a6516;--btn:#0b3a40;--btnf:#fbf7ef;--rose:#f3d3d6;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#06272c;--fg:#fbf7ef;--mut:#c4d8d4;--pan:#0d3d44;--line:#1f5760;--acc:#e0c07a;--btn:#e9b8bd;--btnf:#06272c;--rose:#3a4a50}}
+:root[data-theme="dark"]{--bg:#06272c;--fg:#fbf7ef;--mut:#c4d8d4;--pan:#0d3d44;--line:#1f5760;--acc:#e0c07a;--btn:#e9b8bd;--btnf:#06272c;--rose:#3a4a50}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);font:17px/1.6 Georgia,"Times New Roman",serif;min-height:100vh}
+.bg{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden;opacity:.55;background:radial-gradient(circle at 20% 15%,rgba(216,180,106,.18),transparent 40%),radial-gradient(circle at 85% 80%,rgba(233,184,189,.2),transparent 45%)}
+.bg i{position:absolute;width:3px;height:3px;border-radius:50%;background:#d8b46a;animation:tw 5s ease-in-out infinite}
+.bg svg{position:absolute;left:0;top:30%;width:100%;height:40%}
+.bg path{fill:none;stroke:#d8b46a;stroke-width:1;stroke-dasharray:8 12;animation:fl 30s linear infinite}
+@keyframes tw{0%,100%{opacity:.2}50%{opacity:1}}@keyframes fl{to{stroke-dashoffset:-400}}
+#root{position:relative;z-index:1;max-width:920px;margin:0 auto;padding:0 16px 48px}
+header{display:flex;flex-wrap:wrap;gap:8px;align-items:center;justify-content:space-between;padding:14px 0}
+header b{font-size:1.05rem;letter-spacing:.04em;color:var(--acc)}
+nav{display:flex;gap:6px;flex-wrap:wrap}
+h1{font-weight:400;font-size:clamp(1.7rem,6vw,2.6rem);line-height:1.2;margin:.4em 0}
+h2{font-weight:400;font-size:1.3rem;margin:0 0 .4em;color:var(--acc)}
+p{margin:.4em 0}
+.sans,button,input,textarea,select{font-family:system-ui,-apple-system,"Segoe UI",sans-serif}
+.pan{background:var(--pan);border:1px solid var(--line);border-radius:16px;padding:18px;margin:14px 0}
+button{cursor:pointer;font-size:1rem}
+.btn{background:var(--btn);color:var(--btnf);border:0;border-radius:999px;padding:12px 22px;font-weight:600;min-height:46px}
+.btn.o{background:transparent;color:var(--fg);border:1.5px solid var(--acc)}
+.btn:disabled{opacity:.5;cursor:default}
+.chip{background:transparent;color:var(--fg);border:1.5px solid var(--line);border-radius:999px;padding:8px 14px;min-height:40px}
+.chip[aria-pressed=true],.chip.on{background:var(--acc);color:#fff;border-color:var(--acc)}
+:root:not([data-theme="light"]) .chip.on{color:#06272c}
+button:focus-visible,input:focus-visible,textarea:focus-visible{outline:3px solid #d8b46a;outline-offset:2px}
+input[type=text],input[type=search],textarea{width:100%;padding:12px;border-radius:12px;border:1.5px solid var(--line);background:var(--bg);color:var(--fg);font-size:1rem}
+.row{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+.three{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:12px;margin-top:14px}
+.three .btn{padding:16px;border-radius:16px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(112px,1fr));gap:12px;margin-top:12px}
+.tile{background:none;border:0;padding:0;color:var(--fg);text-align:center;font-size:.8rem}
+.tile .art{border-radius:10px;transition:transform .3s}.tile:hover .art{transform:translateY(-3px)}
+.art svg,.art img{width:100%;height:auto;display:block;border-radius:12px}
+.cardbox{width:min(250px,70vw);margin:10px auto;perspective:1000px}
+.flip{position:relative;transition:transform 1.1s;transform-style:preserve-3d;aspect-ratio:5/8}
+.flip.on{transform:rotateY(180deg)}
+.face{position:absolute;inset:0;backface-visibility:hidden;border-radius:14px;box-shadow:0 10px 30px rgba(6,39,44,.35)}
+.face.fr{transform:rotateY(180deg)}
+.rev .face.fr .art{transform:rotate(180deg)}
+.deck{position:relative;width:min(220px,60vw);aspect-ratio:5/8;margin:22px auto}
+.deck .art{position:absolute;inset:0}
+.deck .art:nth-child(1){transform:translate(-8px,6px) rotate(-4deg)}.deck .art:nth-child(2){transform:translate(6px,3px) rotate(3deg)}
+.deck.sh .art{animation:shuf .5s ease-in-out 2}
+@keyframes shuf{50%{transform:translateX(30px) rotate(8deg)}}
+.breath{width:130px;height:130px;margin:20px auto;border-radius:50%;border:2px solid #d8b46a;background:radial-gradient(circle,rgba(233,184,189,.5),transparent 70%);animation:br 8s ease-in-out infinite}
+@keyframes br{50%{transform:scale(1.5)}}
+.kw{display:inline-block;padding:3px 12px;margin:3px;border-radius:999px;background:var(--rose);color:var(--fg);font-size:.9rem}
+.note{font-size:.85rem;color:var(--mut)}
+.toast{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(16px + env(safe-area-inset-bottom,0px));background:var(--btn);color:var(--btnf);padding:10px 18px;border-radius:12px;z-index:9;font-family:system-ui,sans-serif}
+.toast.err{background:#a3262a;color:#fff}
+.printonly{display:none}
+.fav{display:flex;gap:12px;align-items:flex-start}.fav .art{width:70px;flex:none}
+.fan{display:flex;flex-wrap:wrap;justify-content:center;padding:22px 38px 14px 0;margin:10px 0}.fc{background:none;border:0;padding:0;width:70px;margin-right:-38px;margin-bottom:8px;transition:transform .25s;cursor:pointer}.fc:hover,.fc:focus-visible{transform:translateY(-16px);z-index:2}.fc .art svg{box-shadow:0 3px 8px rgba(6,39,44,.45)}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+@media print{.noprint,.bg,header,.toast{display:none!important}body{background:#fff;color:#000}.pan{border:0;padding:0}.printonly{display:block!important;white-space:pre-wrap}.flip{transform:rotateY(180deg)!important}h2{color:#000}}
+</style>
+</head>
+<body>
+<div class="bg" aria-hidden="true"><svg viewBox="0 0 800 200" preserveAspectRatio="none"><path d="M0 100Q200 20 400 100T800 100"/><path d="M0 140Q200 60 400 140T800 140"/></svg></div>
+<div id="root"></div>
+<script src="https://cdn.jsdelivr.net/npm/react@18.3.1/umd/react.production.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/react-dom@18.3.1/umd/react-dom.production.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/htm@3.1.1/dist/htm.umd.js"></script>
+<script>
+const {useState,useEffect}=React;const html=htm.bind(React.createElement);
+/* ===== 1) KARTENDATEN ===== */
+const M=[
+["Der Narr","Aufbruch,Vertrauen,Leichtigkeit","Der Narr steht an der Schwelle zu etwas Neuem. Er erinnert an Offenheit und den Mut, ohne vollständigen Plan zu beginnen.","Leichtsinn oder fehlende Vorbereitung","Wo darfst du heute leicht und neugierig beginnen?","Ich vertraue meinem nächsten Schritt.","Beginne eine kleine Sache, die du lange aufgeschoben hast."],
+["Der Magier","Tatkraft,Fokus,Gestaltung","Der Magier zeigt, dass du Werkzeuge für deinen Weg bereits in dir trägst und sie bewusst einsetzen kannst.","Zerstreuung oder Selbstüberschätzung","Welche Fähigkeit möchtest du heute bewusst einsetzen?","Ich nutze meine Fähigkeiten mit Klarheit.","Wähle ein Ziel für heute und schreibe den ersten Schritt auf."],
+["Die Hohepriesterin","Intuition,Stille,Innenschau","Die Hohepriesterin lädt dich ein, nach innen zu lauschen. Nicht alles muss sofort erklärt werden; manches zeigt sich in der Stille.","Grübeln oder übermässige Zurückhaltung","Was weisst du innerlich schon, ohne es beweisen zu können?","Ich höre auf meine innere Stimme.","Setze dich fünf Minuten in Stille und schreibe auf, was auftaucht."],
+["Die Herrscherin","Fülle,Fürsorge,Wachstum","Die Herrscherin steht für Nähren, Genuss und Wachstum – im Aussen wie im Inneren.","Überfürsorge oder Bequemlichkeit","Was in deinem Leben darf mehr Fürsorge bekommen – auch du selbst?","Ich darf nähren und genährt werden.","Gönne dir heute bewusst etwas, das dir guttut."],
+["Der Herrscher","Struktur,Verantwortung,Halt","Der Herrscher steht für Ordnung, klare Grenzen und das Übernehmen von Verantwortung.","Starrheit oder Kontrollbedürfnis","Wo schenkt dir eine klare Struktur Sicherheit?","Ich gebe meinem Leben einen sicheren Rahmen.","Ordne einen kleinen Bereich: eine Schublade, einen Termin, eine Liste."],
+["Der Hierophant","Tradition,Lernen,Orientierung","Der Hierophant verweist auf überliefertes Wissen, Mentorinnen und Mentoren sowie Werte, die Orientierung geben.","blinde Anpassung oder Dogmen","Welche Werte tragen dich, und welche gehören dir wirklich?","Ich wähle Werte, die zu mir passen.","Sprich mit einem Menschen, dessen Rat du schätzt."],
+["Die Liebenden","Verbundenheit,Entscheidung,Herz","Die Liebenden stehen für Verbundenheit und für Entscheidungen, die mit deinen Werten im Einklang sind.","Zerrissenheit oder Anpassung um jeden Preis","Welche Entscheidung entspricht deinem Herzen?","Ich entscheide aus Verbundenheit mit mir selbst.","Schreibe auf, was dir in einer Beziehung wirklich wichtig ist."],
+["Der Wagen","Willenskraft,Richtung,Fortschritt","Der Wagen steht für Zielstrebigkeit und die Kunst, gegensätzliche Kräfte in eine Richtung zu lenken.","Verbissenheit oder Hektik","Wohin möchtest du dich gerade bewegen?","Ich lenke meine Energie mit Ruhe und Richtung.","Formuliere ein Ziel in einem Satz und plane einen Schritt dafür."],
+["Die Kraft","Mitgefühl,Mut,Sanftmut","Die Kraft zeigt eine Stärke, die aus Sanftmut entsteht: Du begegnest deinen Impulsen freundlich und doch klar.","Selbstzweifel oder Härte gegen dich selbst","Wie kannst du dir heute mit Freundlichkeit begegnen?","Meine Sanftheit ist meine Stärke.","Sprich einmal liebevoll mit dir, wie mit einer guten Freundin."],
+["Der Eremit","Einkehr,Weisheit,Klarheit","Der Eremit trägt ein Licht durch die Dunkelheit und steht für bewusste Einkehr.","Isolation oder Rückzug aus Angst","Was möchtest du in der Stille klären?","In der Ruhe finde ich meinen Weg.","Plane eine Stunde ohne Bildschirm nur für dich."],
+["Das Rad des Schicksals","Wandel,Zyklen,Chancen","Das Rad erinnert daran, dass alles in Zyklen verläuft. Veränderungen bringen Bewegung und neue Möglichkeiten.","das Gefühl, Umständen ausgeliefert zu sein","Welche Veränderung kannst du als Chance sehen?","Ich bewege mich mit den Zyklen des Lebens.","Wähle eine Gewohnheit, die du bewusst anders gestalten möchtest."],
+["Die Gerechtigkeit","Wahrheit,Ausgleich,Verantwortung","Die Gerechtigkeit lädt dich ein, ehrlich abzuwägen und fair und klar zu entscheiden.","strenges Urteilen oder Aufschieben","Was braucht in deiner Situation einen fairen Ausgleich?","Ich handle ehrlich und fair – auch mir gegenüber.","Liste Vor- und Nachteile einer anstehenden Entscheidung auf."],
+["Der Gehängte","Perspektivwechsel,Loslassen,Geduld","Der Gehängte steht für einen Perspektivwechsel: Innehalten kann neue Einsichten schenken.","Festhängen oder Opferhaltung","Was siehst du anders, wenn du die Perspektive wechselst?","Ich erlaube mir, innezuhalten und neu zu sehen.","Betrachte ein Problem bewusst aus Sicht einer anderen Person."],
+["Der Tod","Wandlung,Abschied,Neubeginn","Der Tod ist ein Symbol für Wandlung, nicht für ein körperliches Ende: Etwas Altes darf gehen, damit Raum für Neues entsteht.","Festhalten am Vergangenen","Was darf in deinem Leben in Frieden zu Ende gehen?","Ich lasse los, was nicht mehr zu mir gehört.","Räume etwas auf oder beende bewusst eine Gewohnheit, die dir nicht mehr dient."],
+["Die Mässigkeit","Balance,Geduld,Harmonie","Die Mässigkeit mischt Gegensätze zu einem stimmigen Ganzen und steht für Geduld und das rechte Mass.","Übertreibung oder Ungeduld","Wo findest du heute das richtige Mass?","Ich finde meine innere Mitte.","Gestalte den Tag mit bewussten Pausen zwischen deinen Aufgaben."],
+["Der Teufel","Bindung,Schatten,Befreiung","Der Teufel symbolisiert Gewohnheiten und Glaubenssätze, die uns binden – und die Möglichkeit, sie bewusst zu lösen.","selbstbegrenzende Muster","Welches Muster hält dich fester, als du möchtest?","Ich darf mich aus alten Mustern lösen.","Benenne eine Gewohnheit, die dich bindet, und plane einen kleinen Schritt dagegen."],
+["Der Turm","Umbruch,Befreiung,Erkenntnis","Der Turm steht für Einsichten, die Unstimmiges ins Wanken bringen und Platz für ein tragfähigeres Fundament schaffen.","Verunsicherung bei Veränderung","Welches Fundament möchtest du neu und stabiler bauen?","Aus Veränderung darf Stabilität wachsen.","Atme tief durch und wähle eine Sache, die du heute stabilisieren kannst."],
+["Der Stern","Hoffnung,Heilung,Vertrauen","Der Stern bringt sanfte Hoffnung und Erneuerung nach fordernden Zeiten.","Ungeduld oder Entmutigung","Was nährt deine Hoffnung gerade?","Ich vertraue meinem Licht.","Gehe kurz nach draussen und betrachte den Himmel."],
+["Der Mond","Intuition,Träume,Ungewissheit","Der Mond zeigt Stimmungen, Träume und Unklares. Er lädt zu Behutsamkeit mit den eigenen Gefühlen ein.","Ängste oder Täuschungen","Welches Gefühl möchte beachtet, aber nicht bewertet werden?","Ich darf mit Unklarem in Ruhe sein.","Schreibe auf, was dich abends beschäftigt, und lege den Zettel weg."],
+["Die Sonne","Freude,Lebendigkeit,Zuversicht","Die Sonne steht für Lebensfreude, Offenheit und Zuversicht.","Übermut oder Ausblenden von Schwierigem","Was macht dich gerade lebendig?","Ich erlaube mir Freude.","Tue heute etwas, das dich zum Lächeln bringt."],
+["Das Gericht","Erwachen,Ruf,Vergebung","Das Gericht ruft zu einem inneren Erwachen: Du betrachtest deinen Weg, vergibst und folgst einem neuen Ruf.","Selbstverurteilung","Welchem inneren Ruf möchtest du folgen?","Ich vergebe mir und folge meinem Ruf.","Ziehe ein kurzes, wohlwollendes Fazit der letzten Monate."],
+["Die Welt","Vollendung,Ganzheit,Verbundenheit","Die Welt steht für Abschluss, Ganzheit und das Gefühl, mit allem verbunden zu sein.","Zögern vor dem nächsten Zyklus","Was hast du geschafft, auf das du stolz sein darfst?","Ich bin ganz und verbunden.","Feiere bewusst einen Erfolg, auch einen kleinen."]];
+const SU=[["k","Kelche","Gefühle und Beziehungen",["Herz","Intuition","Verbundenheit"],"kelche"],["m","Münzen","Alltag, Arbeit und Ressourcen",["Erdung","Fülle","Beständigkeit"],"muenzen"],["s","Schwerter","Denken und Kommunikation",["Klarheit","Wahrheit","Entscheidung"],"schwerter"],["w","Stäbe","Antrieb und Kreativität",["Energie","Mut","Inspiration"],"staebe"]];
+const RK=[
+["Ass","Neubeginn","einen frischen Neubeginn und ein geschenktes Potenzial","Übereifer oder Zögern","Welcher Neubeginn im Bereich „{a}“ ruft dich gerade?","Ich öffne mich für einen neuen Anfang.","Notiere eine Idee zu diesem Lebensbereich und gib ihr heute zehn Minuten."],
+["Zwei","Balance","Abwägen, Balance und eine bewusste Entscheidung","Unentschlossenheit","Wie kannst du im Bereich „{a}“ ein gutes Gleichgewicht finden?","Ich wähle bewusst und im Gleichgewicht.","Schreibe zwei Möglichkeiten mit je einem Vorteil auf."],
+["Drei","Wachstum","Wachstum, Austausch und erste sichtbare Ergebnisse","Ungeduld oder Vergleichen","Was ist im Bereich „{a}“ schon gewachsen?","Ich darf wachsen und mich mitteilen.","Teile ein Vorhaben mit einem vertrauten Menschen."],
+["Vier","Stabilität","Stabilität, Ruhe und die Sicherung des Erreichten","Stillstand","Was gibt dir im Bereich „{a}“ Halt, und was engt dich ein?","Ich gönne mir Halt und Ruhe.","Gönne dir eine bewusste Pause von zehn Minuten."],
+["Fünf","Wandel","Reibung, Veränderung und Lernen durch Krisen","Konflikt oder Selbstzweifel","Was lehrt dich eine Herausforderung im Bereich „{a}“?","Ich lerne aus Reibung und wachse daran.","Benenne eine Sorge und eine Sache, die du daran beeinflussen kannst."],
+["Sechs","Harmonie","Ausgleich, gegenseitige Hilfe und sanftes Weiterkommen","Abhängigkeit oder Schuldgefühle","Wer oder was unterstützt dich im Bereich „{a}“?","Ich nehme Hilfe an und gebe, was ich kann.","Sage jemandem Danke oder bitte um Unterstützung."],
+["Sieben","Geduld","Prüfung, Geduld und eine eigene Strategie","Zweifel oder Ausweichen","Was braucht im Bereich „{a}“ noch Zeit und Geduld?","Ich vertraue meinem Tempo.","Wähle eine Priorität und lass die übrigen Dinge heute ruhen."],
+["Acht","Fokus","Konzentration, Fleiss und Bewegung","Hektik oder Perfektionismus","Wo lohnt sich im Bereich „{a}“ dein Fokus?","Ich gehe konzentriert und gelassen voran.","Arbeite 20 Minuten ungestört an einer einzigen Sache."],
+["Neun","Reife","Erfahrung, Durchhaltevermögen und Selbstständigkeit","Erschöpfung oder Einsamkeit","Worauf darfst du im Bereich „{a}“ vertrauen?","Ich bin stark genug und darf mich ausruhen.","Würdige drei Dinge, die du schon geschafft hast."],
+["Zehn","Vollendung","einen Abschluss und das Ende eines Zyklus","Überlastung","Was darf im Bereich „{a}“ vollendet oder abgegeben werden?","Ich schliesse ab und schaffe Raum für Neues.","Gib eine Aufgabe ab oder schliesse sie bewusst ab."],
+["Bube","Neugier","Neugier, Lernen und eine erste Botschaft","Naivität oder Unreife","Was möchtest du im Bereich „{a}“ neugierig erkunden?","Ich bleibe offen und lernbereit.","Lerne heute eine Kleinigkeit Neues dazu."],
+["Ritter","Tatkraft","Tatkraft, Bewegung und Leidenschaft","Ungestüm oder Rastlosigkeit","Wohin möchtest du im Bereich „{a}“ mit Herz und Ruhe aufbrechen?","Ich handle mutig und achtsam.","Gehe den ersten Schritt – eine Nachricht, ein Anruf, ein Spaziergang."],
+["Königin","Reife Fürsorge","innere Reife, Einfühlung und Selbstführung","Vereinnahmung oder Rückzug","Wie kannst du im Bereich „{a}“ dir und anderen mit Wärme begegnen?","Ich führe mich selbst mit Wärme.","Frage dich heute dreimal, was du gerade brauchst."],
+["König","Verantwortung","Verantwortung, Klarheit und Meisterschaft","Härte oder Kontrolle","Wo darfst du im Bereich „{a}“ klar und souverän entscheiden?","Ich übernehme Verantwortung mit Klarheit.","Triff eine Entscheidung, die du aufgeschoben hast."]];
+const ALL=M.map((m,i)=>({id:"g"+i,grp:"Große Arkana",name:m[0],k:m[1].split(","),m:m[2],sh:m[3],q:m[4],a:m[5],s:m[6],major:i}));
+SU.forEach(su=>RK.forEach((r,ri)=>ALL.push({id:su[0]+ri,grp:su[1],name:`${r[0]} der ${su[1]}`,k:[r[1],su[3][0],su[3][1]],m:`Im Bereich „${su[2]}“ steht diese Karte für ${r[2]}. Traditionell zeigt sie, wie sich ${r[1]} im Zusammenspiel mit ${su[3][0]} und ${su[3][1]} ausdrücken kann.`,sh:r[3],q:r[4].replace("{a}",su[2]),a:r[5],s:r[6],suit:su[4],rank:ri})));
+ALL.forEach((c,i)=>c.n=i);
+const byId=id=>ALL.find(c=>c.id===id);
+/* ===== 2) ZENTRALE BILDZUORDNUNG: eigene Kartenbilder hier eintragen, z. B. g0:"https://…/narr.jpg" ===== */
+const CARD_IMAGES={}; const BACK_IMAGE=null;
+/* ===== 3) DARSTELLUNG (vorläufige SVG-Motive) ===== */
+const G="#d8b46a",RS="#e9b8bd",ROM=["0","I","II","III","IV","V","VI","VII","VIII","IX","X","XI","XII","XIII","XIV","XV","XVI","XVII","XVIII","XIX","XX","XXI"];
+const sym=(s,x,y,k)=>{const t=`transform="translate(${x} ${y}) scale(${k})" stroke="${G}" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"`;return{kelche:`<g ${t} fill="${RS}" fill-opacity=".35"><path d="M-10-10h20q0 14-10 18q-10-4-10-18zM0 8v9M-7 17h14"/></g>`,muenzen:`<g ${t} fill="${G}" fill-opacity=".25"><circle r="10"/><circle r="5"/></g>`,schwerter:`<g ${t} fill="none"><path d="M0-16v26M-7 4h14M0 10v6"/></g>`,staebe:`<g ${t} fill="${RS}" fill-opacity=".35"><path d="M0-16v32M0-6q9-3 9-10q-9 2-9 10zM0 4q-9-3-9-9q9 1 9 9z"/></g>`}[s]};
+const motif=i=>{const o=`<g fill="none" stroke="${G}" stroke-width="1.6">`;const f=i%5;
+if(f==0)return o+`<polygon points="${[...Array(16)].map((_,j)=>{const r=j%2?18:50,a=j*Math.PI/8;return(100+r*Math.sin(a)).toFixed(1)+","+(140-r*Math.cos(a)).toFixed(1)}).join(" ")}"/></g>`;
+if(f==1)return o+`<path d="M115 100a45 45 0 1 0 0 80a35 35 0 1 1 0-80z" fill="${RS}" fill-opacity=".3"/></g>`;
+if(f==2)return o+`<circle cx="100" cy="140" r="20" fill="${G}" fill-opacity=".3"/>${[...Array(12)].map((_,j)=>{const a=j*Math.PI/6;return`<line x1="${100+28*Math.sin(a)}" y1="${140-28*Math.cos(a)}" x2="${100+46*Math.sin(a)}" y2="${140-46*Math.cos(a)}"/>`}).join("")}</g>`;
+if(f==3)return o+`<circle cx="100" cy="122" r="28"/><circle cx="84" cy="150" r="28"/><circle cx="116" cy="150" r="28"/></g>`;
+return o+[120,140,160].map(y=>`<path d="M45 ${y}q14-14 27 0t27 0t27 0t27 0"/>`).join("")+`</g>`};
+const base=`<defs><linearGradient id="gr" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0f5159"/><stop offset="1" stop-color="#06272c"/></linearGradient></defs><rect width="200" height="320" rx="14" fill="url(#gr)"/><rect x="8" y="8" width="184" height="304" rx="9" fill="none" stroke="${G}" stroke-width="1.2"/><circle cx="100" cy="140" r="82" fill="none" stroke="${G}" stroke-opacity=".35"/><circle cx="100" cy="140" r="72" fill="none" stroke="${RS}" stroke-opacity=".3"/>${[[30,40],[170,50],[25,250],[175,240],[150,120],[48,100]].map(p=>`<circle cx="${p[0]}" cy="${p[1]}" r="1.6" fill="${G}"/>`).join("")}`;
+function faceSvg(c){let b=base,t=(x,y,s,z)=>`<text x="${x}" y="${y}" text-anchor="middle" font-family="Georgia,serif" font-size="${s}" fill="#fbf7ef">${z}</text>`;
+if(c.major!==undefined)b+=motif(c.major)+t(100,36,18,ROM[c.major]);
+else{const n=c.rank+1;if(n>10)b+=sym(c.suit,100,140,3.6)+t(100,36,16,c.name.split(" ")[0]);else{const cols=n<4?1:2,rows=Math.ceil(n/cols),sp=rows>3?44:rows>2?50:56,k=n==1?3.2:n<4?1.8:1.5;for(let i=0;i<n;i++){const cc=i%cols,r=Math.floor(i/cols);let x=cols==1?100:75+cc*50;if(cols==2&&i==n-1&&n%2)x=100;b+=sym(c.suit,x,140+(r-(rows-1)/2)*sp,k)}b+=t(100,36,18,ROM[n]||n)}}
+return`<svg viewBox="0 0 200 320" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="${c.name}">${b+t(100,296,14,c.name)}</svg>`}
+const backSvg=`<svg viewBox="0 0 200 320" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">${base.replace(/<circle cx="100" cy="140" r="8[\s\S]*?\/>/,"")}<circle cx="100" cy="160" r="62" fill="${RS}" fill-opacity=".08" stroke="${G}" stroke-width="1.5"/><circle cx="100" cy="160" r="52" fill="none" stroke="${G}" stroke-opacity=".5" stroke-dasharray="3 5"/><g transform="translate(100 160) scale(.5) translate(-100 -143)"><path d="M100 190c-40-28-50-50-50-70 0-20 18-30 32-24 8 4 14 10 18 18 4-8 10-14 18-18 14-6 32 4 32 24 0 20-10 42-50 70z" fill="none" stroke="${G}" stroke-width="3"/></g></svg>`;
+const Art=({c,back})=>back?(BACK_IMAGE?html`<div className="art"><img src=${BACK_IMAGE} alt="Kartenrückseite"/></div>`:html`<div className="art" dangerouslySetInnerHTML=${{__html:backSvg}}/>`):CARD_IMAGES[c.id]?html`<div className="art"><img src=${CARD_IMAGES[c.id]} alt=${c.name}/></div>`:html`<div className="art" dangerouslySetInnerHTML=${{__html:faceSvg(c)}}/>`;
+/* ===== 4) ZUFALL ===== */
+function rnd(n){const lim=Math.floor(4294967296/n)*n,a=new Uint32Array(1);do crypto.getRandomValues(a);while(a[0]>=lim);return a[0]%n}
+/* ===== 5) OPTIONALE SCHNITTSTELLEN (nicht verbunden) ===== */
+// Vision: später per eigenem Backend-Proxy anbinden (API-Schlüssel nur dort!). Rückgabe: [{id:"g0",confidence:0.9}]
+const VISION={available:false,async recognize(file){throw new Error("NOT_CONNECTED")}};
+// KI-Deutung: später ebenfalls über ein Backend. Rückgabe: Text
+const KI={available:false,async interpret(card,question,topic){throw new Error("NOT_CONNECTED")}};
+/* ===== 6) DEUTUNG ===== */
+const TOPICS=["Allgemein","Liebe","Beruf","Persönliche Entwicklung","Innere Balance"];
+const TA={"Allgemein":"dein Leben heute begleiten können.","Liebe":"deine Beziehungen – auch die zu dir selbst – nähren können.","Beruf":"deinen Alltag und deine Arbeit klarer gestalten können.","Persönliche Entwicklung":"dein Wachstum behutsam unterstützen können.","Innere Balance":"dir helfen, wieder in dein inneres Gleichgewicht zu finden."};
+const QM=[k=>`Atme dreimal tief ein und aus. Stelle dir einen sanften Lichtkreis um dein Herz vor und lass mit jedem Ausatmen „${k}“ in dir wachsen. Verweile etwa eine Minute.`,k=>`Lege eine Hand aufs Herz. Atme vier Sekunden ein, sechs Sekunden aus. Spüre bei jedem Atemzug, was „${k}“ heute für dich bedeutet.`,k=>`Schliesse die Augen und stelle dir vor, von weichem, warmem Licht umgeben zu sein. Frage still, wie sich „${k}“ anfühlt. Eine Minute genügt.`,k=>`Spüre deine Füsse am Boden und atme ruhig. Stelle dir feine goldene Linien vor, die dich mit Menschen und Dingen verbinden, die dir wichtig sind – ganz im Sinne von „${k}“.`];
+function secs(c,topic,r){const[k0,k1,k2]=c.k;return[["Grundbedeutung",c.m+(r?" Umgekehrt lädt die Karte dazu ein, ihre Energie zunächst nach innen zu richten und zu schauen, wo sie gerade stockt.":"")],["Impuls zu deinem Thema",`Zum Thema „${topic}“: Frage dich, wie ${k0} und ${k1} ${TA[topic]}`],["Licht und Herausforderung",`Licht: ${k0} und ${k1} können dich tragen, wenn du sie in kleinen Schritten lebst. Herausforderung: Achte auf mögliche Stolpersteine wie ${c.sh}.`],["Deine Reflexionsfrage",c.q],["Deine Affirmation",c.a],["Dein nächster Schritt",c.s],["Quantenliebe-Moment",QM[c.n%4](k2)]]}
+const asText=(rd,note)=>`${rd.c.name}${rd.r?" (umgekehrt)":""}\n${rd.c.k.join(" · ")}\n${rd.q?`Frage: ${rd.q}\n`:""}\n`+secs(rd.c,rd.topic,rd.r).map(s=>`${s[0]}: ${s[1]}`).join("\n\n")+(note?`\n\nMeine Notiz: ${note}`:"");
+/* ===== 7) SPEICHER (nur lokal) ===== */
+const LS="ql_tarot_favs";
+const load=()=>{try{return JSON.parse(localStorage.getItem(LS)||"[]")}catch(e){return[]}};
+/* ===== 8) APP ===== */
+function Grid({onPick,s,setS,grp,setGrp}){const list=ALL.filter(c=>(grp=="Alle"||c.grp==grp)&&c.name.toLowerCase().includes(s.trim().toLowerCase()));
+return html`<div><input type="search" aria-label="Karte nach Namen suchen" placeholder="Kartenname suchen …" value=${s} onChange=${e=>setS(e.target.value)} onInput=${e=>setS(e.target.value)}/>
+<div className="row" style=${{marginTop:10}}>${["Alle","Große Arkana","Kelche","Münzen","Schwerter","Stäbe"].map(g=>html`<button key=${g} className="chip" aria-pressed=${grp==g} onClick=${()=>setGrp(g)}>${g}</button>`)}</div>
+<p className="note" aria-live="polite">${list.length} von 78 Karten</p>
+<div className="grid">${list.map(c=>html`<button key=${c.id} className="tile" onClick=${()=>onPick(c)} aria-label=${c.name}><${Art} c=${c}/><span>${c.name}</span></button>`)}</div>
+${!list.length&&html`<p>Keine Karte gefunden. Prüfe die Schreibweise oder wähle „Alle“.</p>`}</div>`}
+function App(){
+const[v,setV]=useState("home"),[q,setQ]=useState(""),[topic,setTopic]=useState("Allgemein"),[rev,setRev]=useState(false),[rd,setRd]=useState(null),[favs,setFavs]=useState(load),[toast,setToast]=useState(null),[busy,setBusy]=useState(false),[grp,setGrp]=useState("Alle"),[s,setS]=useState(""),[img,setImg]=useState(null),[note,setNote]=useState(""),[flip,setFlip]=useState(false),[del,setDel]=useState(false),[cands,setCands]=useState(null),[vb,setVb]=useState(false),[order,setOrder]=useState([]);
+const say=(t,err)=>{setToast({t,err});setTimeout(()=>setToast(null),3200)};
+useEffect(()=>{try{localStorage.setItem(LS,JSON.stringify(favs))}catch(e){say("Speichern im Browser nicht möglich.",1)}},[favs]);
+useEffect(()=>()=>{img&&URL.revokeObjectURL(img.url)},[img]);
+const go=x=>{setV(x);window.scrollTo(0,0)};
+const show=(c,r,extra)=>{setRd({c,r,id:Date.now()+"",topic,q,...extra});setNote("");setFlip(false);go("result");setTimeout(()=>setFlip(true),200)};
+const draw=()=>{setBusy(true);setTimeout(()=>{const c=ALL[rnd(78)];setBusy(false);show(c,rev&&rnd(2)==1)},1200)};
+const shuffle=()=>{const a=ALL.map((_,i)=>i);for(let i=77;i>0;i--){const j=rnd(i+1);[a[i],a[j]]=[a[j],a[i]]}setOrder(a)};
+const openSpread=()=>{shuffle();go("spread")};
+const pickAt=i=>show(ALL[order[i]],rev&&rnd(2)==1);
+const fav=rd&&favs.find(f=>f.id==rd.id);
+const toggleFav=()=>{if(fav){setFavs(favs.filter(f=>f.id!=rd.id));say("Favorit entfernt.")}else{setFavs([{id:rd.id,cid:rd.c.id,rev:rd.r,topic:rd.topic,q:rd.q,note,date:new Date().toLocaleString("de-DE",{dateStyle:"medium",timeStyle:"short"})},...favs]);say("Als Favorit gespeichert.")}};
+const editNote=t=>{setNote(t);if(fav)setFavs(favs.map(f=>f.id==rd.id?{...f,note:t}:f))};
+const copy=()=>{navigator.clipboard.writeText(asText(rd,note)).then(()=>say("Deutung kopiert.")).catch(()=>say("Kopieren nicht möglich. Bitte markiere den Text manuell.",1))};
+const onFile=async e=>{const f=e.target.files[0];if(!f)return;if(!f.type.startsWith("image/")){say("Bitte wähle eine Bilddatei.",1);return}setImg({url:URL.createObjectURL(f),name:f.name});setCands(null);if(VISION.available){setVb(true);try{setCands(await VISION.recognize(f))}catch(x){say("Erkennung fehlgeschlagen. Bitte wähle manuell.",1)}setVb(false)}};
+const openFav=f=>{setRd({c:byId(f.cid),r:f.rev,id:f.id,topic:f.topic,q:f.q});setNote(f.note||"");setFlip(true);go("result")};
+const nav=[["home","Start"],["favs",`Favoriten (${favs.length})`]];
+return html`<div>
+<header className="noprint"><b>✦ QUANTENLIEBE</b><nav aria-label="Hauptnavigation">${nav.map(n=>html`<button key=${n[0]} className=${"chip"+(v==n[0]?" on":"")} onClick=${()=>go(n[0])}>${n[1]}</button>`)}</nav></header>
+${v=="home"&&html`<main><h1>Quantenliebe Tarot<br/><span style=${{color:"var(--acc)",fontSize:"60%"}}>Dein Moment der Klarheit</span></h1>
+<div className="pan"><p style=${{fontSize:"1.2rem"}}>Nimm dir einen Moment für dich. Welche Frage bewegt dich heute?</p>
+<label className="note" htmlFor="q">Persönliche Frage (optional)</label>
+<input id="q" type="text" maxLength="200" placeholder="Was möchtest du dir heute anschauen?" value=${q} onInput=${e=>setQ(e.target.value)}/>
+<p className="note" style=${{marginTop:12}}>Thema</p><div className="row">${TOPICS.map(t=>html`<button key=${t} className="chip" aria-pressed=${topic==t} onClick=${()=>setTopic(t)}>${t}</button>`)}</div>
+<label className="row note" style=${{marginTop:14}}><input type="checkbox" checked=${rev} onChange=${e=>setRev(e.target.checked)}/> Umgekehrte Karten zulassen (nur beim Ziehen)</label>
+<div className="three"><button className="btn" onClick=${()=>go("breath")}>Eine Karte ziehen</button><button className="btn" onClick=${()=>go("pick")}>Eine Karte auswählen</button><button className="btn" onClick=${()=>go("photo")}>Karte per Foto erkennen</button></div></div></main>`}
+${v=="breath"&&html`<main className="pan" style=${{textAlign:"center"}}><h2>Eine kleine Atemeinladung</h2><p>Atme ein, wenn der Kreis wächst, und aus, wenn er schrumpft. Nimm dir so viel Zeit, wie du magst.</p><div className="breath" aria-hidden="true"></div><div className="row" style=${{justifyContent:"center"}}><button className="btn" onClick=${()=>go("deck")}>Ich bin bereit</button><button className="btn o" onClick=${()=>go("deck")}>Überspringen</button></div></main>`}
+${v=="deck"&&html`<main className="pan" style=${{textAlign:"center"}}><h2>Dein Deck</h2><p>${q?`Deine Frage: „${q}“`:`Thema: ${topic}`}</p><div className=${"deck"+(busy?" sh":"")}><${Art} back=${true}/><${Art} back=${true}/><${Art} back=${true}/></div><p aria-live="polite">${busy?"Die Karte wird gezogen …":"Atme ein, konzentriere dich und ziehe, wenn du soweit bist."}</p><div className="row" style=${{justifyContent:"center"}}><button className="btn" disabled=${busy} onClick=${openSpread}>Karten ausbreiten und selbst ziehen</button><button className="btn o" disabled=${busy} onClick=${draw}>Meine Karte ziehen</button></div></main>`}
+${v=="spread"&&html`<main className="pan" style=${{textAlign:"center"}}><h2>Wähle deine Karte</h2><p>${q?`Deine Frage: „${q}“. `:""}Lass deinen Blick über die Karten wandern und tippe auf die, die dich anspricht.</p><div className="fan">${order.map((_,i)=>html`<button key=${i} className="fc" aria-label=${`Karte ${i+1} von 78 ziehen`} onClick=${()=>pickAt(i)}><${Art} back=${true}/></button>`)}</div><p className="note">Die Karten wurden zuvor zufällig gemischt. Deine Wahl bestimmt nur die Position.</p><div className="row" style=${{justifyContent:"center",marginTop:10}}><button className="btn o" onClick=${shuffle}>Neu mischen</button><button className="btn o" onClick=${()=>go("deck")}>Zurück</button></div></main>`}
+${v=="pick"&&html`<main className="pan"><h2>Eine Karte auswählen</h2><${Grid} onPick=${c=>show(c,false)} s=${s} setS=${setS} grp=${grp} setGrp=${setGrp}/></main>`}
+${v=="photo"&&html`<main className="pan"><h2>Karte per Foto erkennen</h2>
+<div className="row"><label className="btn">Foto hochladen<input type="file" accept="image/*" onChange=${onFile} style=${{display:"none"}}/></label><label className="btn o">Mit Kamera aufnehmen<input type="file" accept="image/*" capture="environment" onChange=${onFile} style=${{display:"none"}}/></label></div>
+<p className="note">Das Foto bleibt nur in diesem Browserfenster und wird nicht gespeichert.</p>
+${img&&html`<div><img src=${img.url} alt="Dein hochgeladenes Kartenfoto" style=${{maxWidth:"min(260px,80%)",borderRadius:12,display:"block",margin:"12px 0"}}/>
+${vb&&html`<p aria-live="polite">Karte wird erkannt …</p>`}
+${!VISION.available&&html`<p role="status" className="pan" style=${{background:"var(--rose)"}}>Die automatische Erkennung ist noch nicht verbunden. Bitte wähle den Kartennamen unten selbst aus.</p>`}
+${cands&&html`<div><p>Ist das deine Karte? Bitte bestätige oder wähle:</p><div className="row">${cands.map(x=>byId(x.id)).filter(Boolean).map(c=>html`<button key=${c.id} className="btn o" onClick=${()=>show(c,false)}>${c.name}</button>`)}</div></div>`}</div>`}
+<h2 style=${{marginTop:18}}>Karte manuell wählen</h2><${Grid} onPick=${c=>show(c,false)} s=${s} setS=${setS} grp=${grp} setGrp=${setGrp}/></main>`}
+${v=="result"&&rd&&html`<main className="pan"><div className="cardbox"><div className=${"flip"+(flip?" on":"")+(rd.r?" rev":"")}><div className="face"><${Art} back=${true}/></div><div className="face fr"><${Art} c=${rd.c}/></div></div></div>
+<h1 style=${{textAlign:"center",fontSize:"1.8rem"}}>${rd.c.name}${rd.r?" (umgekehrt)":""}</h1>
+<div style=${{textAlign:"center"}} aria-label="Schlüsselwörter">${rd.c.k.map(k=>html`<span className="kw" key=${k}>${k}</span>`)}</div>
+${rd.q&&html`<p style=${{textAlign:"center"}} className="note">Deine Frage: „${rd.q}“</p>`}
+${secs(rd.c,rd.topic,rd.r).map(x=>html`<section key=${x[0]} style=${{marginTop:16}}><h2>${x[0]}</h2><p>${x[1]}</p></section>`)}
+<section style=${{marginTop:16}}><h2>Deine Notiz</h2><textarea rows="3" aria-label="Persönliche Notiz" placeholder="Was nimmst du mit?" className="noprint" value=${note} onInput=${e=>editNote(e.target.value)}/><div className="printonly">${note}</div></section>
+<div className="row noprint" style=${{marginTop:16}}><button className="btn" onClick=${toggleFav}>${fav?"Aus Favoriten entfernen":"Als Favorit speichern"}</button><button className="btn o" onClick=${copy}>Deutung kopieren</button><button className="btn o" onClick=${()=>window.print()}>Deutung drucken</button><button className="btn o" onClick=${()=>go("home")}>Neue Frage</button></div>
+<p className="note noprint">Favoriten und Notizen liegen nur lokal in deinem Browser und können bei gelöschten Browserdaten verloren gehen.</p>
+<p className="note">Die Deutung basiert auf hinterlegten Kartenbedeutungen. Deine frei formulierte Frage wird dabei nicht individuell analysiert.</p>
+<p className="note">Tarot dient der Selbstreflexion und spirituellen Inspiration. Es liefert keine gesicherten Vorhersagen und ersetzt keine medizinische, psychologische, rechtliche oder finanzielle Beratung.</p></main>`}
+${v=="favs"&&html`<main className="pan"><h2>Deine Favoriten</h2><p className="note">Gespeichert nur lokal in diesem Browser; bei gelöschten Browserdaten gehen sie verloren.</p>
+${!favs.length&&html`<p>Noch keine Favoriten. Ziehe oder wähle eine Karte und speichere sie.</p>`}
+${favs.map(f=>{const c=byId(f.cid);return html`<div className="fav pan" key=${f.id}><${Art} c=${c}/><div style=${{flex:1}}><b>${c.name}${f.rev?" (umgekehrt)":""}</b><div className="note">${f.date} · ${f.topic}</div>${f.note&&html`<p>${f.note}</p>`}<div className="row"><button className="chip" onClick=${()=>openFav(f)}>Öffnen</button><button className="chip" onClick=${()=>{setFavs(favs.filter(x=>x.id!=f.id));say("Favorit gelöscht.")}}>Löschen</button></div></div></div>`})}
+${favs.length>0&&html`<button className="btn o" onClick=${()=>{if(!del){setDel(true);setTimeout(()=>setDel(false),4000)}else{setFavs([]);setDel(false);say("Alle gespeicherten Daten gelöscht.")}}}>${del?"Wirklich alles löschen? Nochmal tippen":"Alle gespeicherten Daten löschen"}</button>`}</main>`}
+${toast&&html`<div className=${"toast"+(toast.err?" err":"")} role="status">${toast.t}</div>`}
+</div>`}
+const bg=document.querySelector(".bg");for(let i=0;i<28;i++){const d=document.createElement("i");d.style.cssText=`left:${Math.random()*100}%;top:${Math.random()*100}%;animation-delay:${Math.random()*5}s`;bg.appendChild(d)}
+ReactDOM.createRoot(document.getElementById("root")).render(html`<${App}/>`);
+</script>
+</body>
+</html>
